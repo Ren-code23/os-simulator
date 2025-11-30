@@ -59,10 +59,15 @@ function addProcess() {
         return;
     }
     
-    if (isNaN(priority) || priority < 0) {
-        showSchedulingError('Please enter a valid priority (>= 0)');
-        return;
+    const algorithm = document.getElementById('schedulingAlgorithm').value;
+
+    if (algorithm === "priority") {
+        if (isNaN(priority) || priority < 0) {
+            showSchedulingError('Please enter a valid priority (>= 0)');
+            return;
+        }
     }
+
     
     // Check if process ID already exists
     if (processes.find(p => p.id === processId)) {
@@ -96,6 +101,8 @@ function displayProcessList() {
     const calculateBtn = document.getElementById('calculateSchedulingBtn');
     const algorithm = document.getElementById('schedulingAlgorithm').value;
     const showPriority = algorithm === 'priority';
+
+    // document.getElementById('calculateSchedulingBtn').disabled = true;
     
     if (processes.length === 0) {
         processListDiv.innerHTML = '<p>No processes added yet.</p>';
