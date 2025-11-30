@@ -31,14 +31,21 @@ function showCalculateError(message) {
  * Add process to list
  */
 function addProcess() {
-    const processId = document.getElementById('processId').value.trim();
+    const processIdInput = document.getElementById('processId').value.trim();
     const arrivalTime = parseInt(document.getElementById('arrivalTime').value);
     const burstTime = parseInt(document.getElementById('burstTime').value);
     const priority = parseInt(document.getElementById('priority').value);
     
     // Validation
-    if (!processId) {
+    if (!processIdInput) {
         showSchedulingError('Please enter a process ID');
+        return;
+    }
+
+    const processId = parseInt(processIdInput);
+
+    if (isNaN(processId) || processId < 0) {
+        showSchedulingError('Process ID must be a non-negative integer.');
         return;
     }
     
@@ -358,7 +365,16 @@ function roundRobinScheduling() {
         }
     }
 
-    const results = Object.values(resultsMap);
+    const results = Object.values(resultsMap).map(r => ({
+        process: r.id,
+        arrivalTime: r.arrivalTime,
+        burstTime: r.burstTime,
+        priority: r.priority,
+        startTime: r.startTime,
+        completionTime: r.completionTime,
+        turnaroundTime: r.turnaroundTime,
+        waitingTime: r.waitingTime
+    }));
     const avgWaitingTime = results.reduce((sum, r) => sum + r.waitingTime, 0) / results.length;
     const avgTurnaroundTime = results.reduce((sum, r) => sum + r.turnaroundTime, 0) / results.length;
 
