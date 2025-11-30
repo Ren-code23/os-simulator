@@ -37,9 +37,10 @@ function fifoPageReplacement(referenceString, numFrames) {
                 step.action = 'Page Fault - Added to empty frame';
             } else {
                 // Replace oldest page (FIFO)
+                const replacedFrameIndex = framePointer;
                 frames[framePointer] = page;
                 framePointer = (framePointer + 1) % numFrames;
-                step.action = `Page Fault - Replaced frame ${framePointer === 0 ? numFrames : framePointer}`;
+                step.action = `Page Fault - Replaced frame ${replacedFrameIndex + 1}`;
             }
             step.frames = [...frames];
         }
@@ -183,7 +184,7 @@ function optimalPageReplacement(referenceString, numFrames) {
                     optimalIndex = 0; // Fallback
                 }
                 frames[optimalIndex] = page;
-                step.action = `Page Fault - Replaced optimal page ${frames[optimalIndex] === page ? optimalPage : frames[optimalIndex]}`;
+                step.action = `Page Fault - Replaced optimal page ${optimalPage}`;
             }
             step.frames = [...frames];
         }
@@ -215,13 +216,13 @@ function displayPagingResults(results) {
             <p><strong>Total Page Faults:</strong> ${result.pageFaults}</p>
             <p><strong>Page Fault Rate:</strong> ${result.pageFaultRate}</p>
             <h4>Step-by-Step Process:</h4>
-            <div class="table-container">
+            <div class="table-container" style="overflow-x: auto;">
                 <table class="page-table">
                     <thead>
                         <tr>
                             <th>Step</th>
                             <th>Page</th>
-                            ${Array(result.steps[0].frames.length).fill(0).map((_, i) => `<th>Frame ${i + 1}</th>`).join('')}
+                            ${Array(parseInt(document.getElementById('numFrames').value)).fill(0).map((_, i) => `<th>Frame ${i + 1}</th>`).join('')}
                             <th>Page Fault</th>
                             <th>Action</th>
                         </tr>
@@ -231,7 +232,7 @@ function displayPagingResults(results) {
                             <tr>
                                 <td>${step.step}</td>
                                 <td><strong>${step.page}</strong></td>
-                                ${Array(result.steps[0].frames.length).fill(0).map((_, i) => 
+                                ${Array(parseInt(document.getElementById('numFrames').value)).fill(0).map((_, i) => 
                                     `<td>${step.frames[i] !== undefined ? step.frames[i] : '-'}</td>`
                                 ).join('')}
                                 <td class="${step.pageFault ? 'page-fault' : ''}">${step.pageFault ? 'Yes' : 'No'}</td>
@@ -247,6 +248,17 @@ function displayPagingResults(results) {
     });
 }
 
+function showPagingError(message) {
+    const errorDiv = document.querySelector('#paging-section .error-message');
+    if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 5000); // Hide after 5 seconds
+    }
+}
+
 /**
  * Handle page replacement calculation
  */
@@ -255,14 +267,9 @@ function calculatePageReplacement() {
     const referenceStringInput = document.getElementById('referenceString').value.trim();
     const numFrames = parseInt(document.getElementById('numFrames').value);
     
-    // Validation
+    // Validation for reference string
     if (!referenceStringInput) {
-        alert('Please enter a reference string');
-        return;
-    }
-    
-    if (numFrames < 1 || numFrames > 10) {
-        alert('Number of frames must be between 1 and 10');
+        showPagingError('Please enter a reference string');
         return;
     }
     
@@ -270,10 +277,21 @@ function calculatePageReplacement() {
     const referenceString = referenceStringInput.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n));
     
     if (referenceString.length === 0) {
-        alert('Invalid reference string. Please use comma-separated numbers.');
+        showPagingError('Invalid reference string. Please use comma-separated numbers.');
+        return;
+    }
+
+    // Validation for number of frames
+    if (isNaN(numFrames) || numFrames < 1) {
+        showPagingError('Number of frames must be at least 1.');
         return;
     }
     
+    if (numFrames > referenceString.length) {
+        showPagingError('Number of frames cannot exceed the length of the reference string.');
+        return;
+    }
+
     // Calculate all algorithms
     const fifoResult = fifoPageReplacement(referenceString, numFrames);
     const lruResult = lruPageReplacement(referenceString, numFrames);
@@ -285,9 +303,14 @@ function calculatePageReplacement() {
 
 // Setup event listener
 document.addEventListener('DOMContentLoaded', function() {
-    const calculateBtn = document.getElementById('calculatePagingBtn');
-    if (calculateBtn) {
-        calculateBtn.addEventListener('click', calculatePageReplacement);
+    const referenceStringInput = document.getElementById('referenceString');
+    const numFramesInput = document.getElementById('numFrames');
+
+    if (referenceStringInput && numFramesInput) {
+        referenceStringInput.addEventListener('input', calculatePageReplacement);
+        numFramesInput.addEventListener('input', calculatePageReplacement);
+
+        // Initial calculation on page load
+        calculatePageReplacement();
     }
 });
-
