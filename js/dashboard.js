@@ -33,4 +33,3 @@ document.addEventListener('DOMContentLoaded', function() {
         sections[0].classList.add('active');
     }
 });
-
