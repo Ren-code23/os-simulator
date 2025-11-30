@@ -71,16 +71,22 @@ os-simulator/
 └── README.md
 ```
 
-## Deployment
+## Deployment (GitHub Pages - Recommended)
 
-### GitHub Pages
-1. Create a GitHub repository
-2. Upload all files
-3. Go to Settings → Pages
-4. Select main branch
-5. Your app will be live at: https://yourusername.github.io/repository-name
+Since we're already using GitHub, GitHub Pages is the easiest option:
 
-### Netlify
+1. Go to your repository: https://github.com/Ren-code23/os-simulator
+2. Click "Settings" tab
+3. Scroll to "Pages" in left sidebar
+4. Under "Source", select "main" branch
+5. Select "/ (root)" folder
+6. Click "Save"
+7. Wait 1-2 minutes
+8. Your app will be live at: https://ren-code23.github.io/os-simulator/
+
+**Note:** Every time you push to GitHub, your site automatically updates!
+
+### Alternative: Netlify
 1. Go to netlify.com
 2. Drag and drop your project folder
 3. Done. You get a live URL
