@@ -1,0 +1,1022 @@
+/* 8-BIT SUPER MARIO THEME CSS */
+
+/* Import Pixel Font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Color Palette - Super Mario Style */
+:root {
+    --mario-red: #E52521;
+    --mario-blue: #5C94FC;
+    --mario-yellow: #FBD000;
+    --mario-green: #5CAB3A;
+    --mario-brown: #8B4513;
+    --bg-dark: #1a1a2e;
+    --bg-medium: #16213e;
+    --bg-light: #0f3460;
+    --text-white: #ffffff;
+    --text-yellow: #FBD000;
+    --border-black: #000000;
+    --shadow-dark: #000000;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background-attachment: fixed;
+    color: var(--text-white);
+    line-height: 1.8;
+    font-size: 12px;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated Background Pattern (Optional - can remove if too much) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Login Page - 8-Bit Style */
+.login-box {
+    max-width: 450px;
+    margin: 80px auto;
+    background: var(--bg-medium);
+    padding: 40px;
+    border: 6px solid var(--border-black);
+    box-shadow: 
+        8px 8px 0 var(--shadow-dark),
+        inset -4px -4px 0 rgba(0,0,0,0.3),
+        inset 4px 4px 0 rgba(255,255,255,0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.login-box::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: var(--mario-red);
+    z-index: -1;
+    border: 4px solid var(--border-black);
+}
+
+.login-box h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--mario-yellow);
+    font-size: 20px;
+    text-shadow: 
+        3px 3px 0 var(--border-black),
+        -1px -1px 0 var(--border-black),
+        1px -1px 0 var(--border-black),
+        -1px 1px 0 var(--border-black);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Form Styles - Pixelated */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: var(--mario-yellow);
+    text-shadow: 2px 2px 0 var(--border-black);
+    text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 4px solid var(--border-black);
+    background: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    box-shadow: 
+        inset 3px 3px 0 rgba(0,0,0,0.5),
+        inset -2px -2px 0 rgba(255,255,255,0.1);
+    transition: all 0.1s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--mario-yellow);
+    box-shadow: 
+        inset 3px 3px 0 rgba(0,0,0,0.5),
+        inset -2px -2px 0 rgba(255,255,255,0.1),
+        0 0 0 3px rgba(251, 208, 0, 0.3);
+}
+
+/* Buttons - Super Mario Style */
+.btn-primary {
+    background: var(--mario-red);
+    color: var(--text-white);
+    padding: 15px 30px;
+    border: 4px solid var(--border-black);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 var(--border-black);
+    box-shadow: 
+        4px 4px 0 var(--shadow-dark),
+        inset -2px -2px 0 rgba(0,0,0,0.3);
+    transition: all 0.1s;
+    position: relative;
+}
+
+.btn-primary:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 
+        2px 2px 0 var(--shadow-dark),
+        inset -2px -2px 0 rgba(0,0,0,0.3);
+}
+
+.btn-primary:active {
+    transform: translate(4px, 4px);
+    box-shadow: 
+        1px 1px 0 var(--shadow-dark),
+        inset -2px -2px 0 rgba(0,0,0,0.3);
+}
+
+.btn-secondary {
+    background: var(--mario-blue);
+    color: var(--text-white);
+    padding: 10px 20px;
+    border: 3px solid var(--border-black);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 9px;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 var(--border-black);
+    box-shadow: 
+        3px 3px 0 var(--shadow-dark),
+        inset -2px -2px 0 rgba(0,0,0,0.3);
+    transition: all 0.1s;
+}
+
+.btn-secondary:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 
+        2px 2px 0 var(--shadow-dark),
+        inset -2px -2px 0 rgba(0,0,0,0.3);
+}
+
+/* Error Message */
+.error-message {
+    color: var(--mario-red);
+    margin: 15px 0;
+    padding: 12px;
+    background: rgba(229, 37, 33, 0.2);
+    border: 3px solid var(--mario-red);
+    font-size: 9px;
+    display: none;
+    text-shadow: 1px 1px 0 var(--border-black);
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* Dashboard Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--bg-medium);
+    border: 5px solid var(--border-black);
+    box-shadow: 
+        6px 6px 0 var(--shadow-dark),
+        inset -3px -3px 0 rgba(0,0,0,0.3);
+}
+
+header h1 {
+    color: var(--mario-yellow);
+    font-size: 18px;
+    text-shadow: 
+        3px 3px 0 var(--border-black),
+        -1px -1px 0 var(--border-black);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Navigation - 8-Bit Style */
+.main-nav {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: 15px 25px;
+    border: 4px solid var(--border-black);
+    background: var(--bg-light);
+    color: var(--text-white);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 9px;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 var(--border-black);
+    box-shadow: 
+        4px 4px 0 var(--shadow-dark),
+        inset -2px -2px 0 rgba(0,0,0,0.3);
+    transition: all 0.1s;
+    flex: 1;
+    min-width: 150px;
+}
+
+.nav-btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 
+        2px 2px 0 var(--shadow-dark),
+        inset -2px -2px 0 rgba(0,0,0,0.3);
+    background: var(--mario-blue);
+}
+
+.nav-btn.active {
+    background: var(--mario-green);
+    color: var(--text-white);
+    box-shadow: 
+        2px 2px 0 var(--shadow-dark),
+        inset -2px -2px 0 rgba(0,0,0,0.3);
+}
+
+/* Content Sections */
+.content-section {
+    display: none;
+    background: var(--bg-medium);
+    padding: 30px;
+    border: 5px solid var(--border-black);
+    box-shadow: 
+        6px 6px 0 var(--shadow-dark),
+        inset -3px -3px 0 rgba(0,0,0,0.3);
+}
+
+.content-section.active {
+    display: block;
+}
+
+.content-section h2 {
+    color: var(--mario-yellow);
+    margin-bottom: 25px;
+    font-size: 16px;
+    text-shadow: 
+        3px 3px 0 var(--border-black),
+        -1px -1px 0 var(--border-black);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.content-section h3 {
+    color: var(--mario-blue);
+    margin-bottom: 15px;
+    margin-top: 20px;
+    font-size: 12px;
+    text-shadow: 2px 2px 0 var(--border-black);
+    text-transform: uppercase;
+}
+
+/* Algorithm Container */
+.algorithm-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-section {
+    background: var(--bg-dark);
+    padding: 25px;
+    border: 4px solid var(--border-black);
+    box-shadow: 
+        inset 3px 3px 0 rgba(0,0,0,0.5),
+        inset -2px -2px 0 rgba(255,255,255,0.1);
+}
+
+/* Matrices Section */
+.matrices-section {
+    margin-top: 20px;
+}
+
+.matrix-container {
+    margin-bottom: 25px;
+}
+
+.matrix-container h4 {
+    margin-bottom: 15px;
+    color: var(--mario-yellow);
+    font-size: 11px;
+    text-shadow: 2px 2px 0 var(--border-black);
+    text-transform: uppercase;
+}
+
+.matrix {
+    display: inline-block;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 15px 0;
+    border: 4px solid var(--border-black);
+    box-shadow: 4px 4px 0 var(--shadow-dark);
+}
+
+.matrix th,
+.matrix td {
+    border: 2px solid var(--border-black);
+    padding: 10px 15px;
+    text-align: center;
+    min-width: 70px;
+    background: var(--bg-dark);
+}
+
+.matrix th {
+    background: var(--mario-red);
+    color: var(--text-white);
+    font-size: 9px;
+    text-shadow: 2px 2px 0 var(--border-black);
+    text-transform: uppercase;
+}
+
+.matrix td {
+    background: var(--bg-medium);
+    color: var(--text-white);
+}
+
+.matrix input {
+    width: 60px;
+    padding: 8px;
+    border: 2px solid var(--border-black);
+    background: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 9px;
+    text-align: center;
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.5);
+}
+
+.matrix input:focus {
+    outline: none;
+    border-color: var(--mario-yellow);
+    background: var(--bg-light);
+}
+
+/* Results Section */
+.results-section {
+    margin-top: 25px;
+    padding: 25px;
+    background: var(--bg-dark);
+    border: 4px solid var(--border-black);
+    box-shadow: 
+        inset 3px 3px 0 rgba(0,0,0,0.5),
+        inset -2px -2px 0 rgba(255,255,255,0.1);
+}
+
+.results-section h3 {
+    color: var(--mario-yellow);
+    margin-bottom: 20px;
+    font-size: 12px;
+    text-shadow: 2px 2px 0 var(--border-black);
+}
+
+.result-box {
+    background: var(--bg-medium);
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 4px solid var(--border-black);
+    box-shadow: 4px 4px 0 var(--shadow-dark);
+}
+
+.result-box.success {
+    border-color: var(--mario-green);
+    box-shadow: 4px 4px 0 var(--mario-green);
+}
+
+.result-box.error {
+    border-color: var(--mario-red);
+    box-shadow: 4px 4px 0 var(--mario-red);
+}
+
+.result-box h3 {
+    color: var(--mario-yellow);
+    margin-bottom: 15px;
+    font-size: 11px;
+    text-shadow: 2px 2px 0 var(--border-black);
+}
+
+.result-box h4 {
+    color: var(--mario-blue);
+    margin: 15px 0 10px 0;
+    font-size: 10px;
+    text-shadow: 2px 2px 0 var(--border-black);
+}
+
+.result-box p {
+    font-size: 9px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+/* Page Table */
+.page-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    border: 4px solid var(--border-black);
+    box-shadow: 4px 4px 0 var(--shadow-dark);
+}
+
+.page-table th,
+.page-table td {
+    border: 2px solid var(--border-black);
+    padding: 10px;
+    text-align: center;
+    font-size: 9px;
+}
+
+.page-table th {
+    background: var(--mario-red);
+    color: var(--text-white);
+    text-shadow: 2px 2px 0 var(--border-black);
+    text-transform: uppercase;
+}
+
+.page-table td {
+    background: var(--bg-medium);
+    color: var(--text-white);
+}
+
+.page-table .page-fault {
+    background: rgba(229, 37, 33, 0.5);
+    color: var(--mario-yellow);
+    font-weight: bold;
+    text-shadow: 1px 1px 0 var(--border-black);
+}
+
+/* Process List */
+.process-list {
+    margin: 20px 0;
+}
+
+.process-item {
+    background: var(--bg-dark);
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 4px solid var(--border-black);
+    box-shadow: 3px 3px 0 var(--shadow-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.process-item span {
+    margin-right: 15px;
+    font-size: 9px;
+}
+
+/* Gantt Chart */
+.gantt-chart {
+    margin: 20px 0;
+    overflow-x: auto;
+    padding: 10px;
+    background: var(--bg-dark);
+    border: 4px solid var(--border-black);
+    box-shadow: inset 3px 3px 0 rgba(0,0,0,0.5);
+}
+
+.gantt-bar {
+    display: inline-block;
+    padding: 12px 15px;
+    margin: 3px;
+    background: var(--mario-red);
+    color: var(--text-white);
+    text-align: center;
+    border: 3px solid var(--border-black);
+    font-size: 9px;
+    text-shadow: 2px 2px 0 var(--border-black);
+    box-shadow: 3px 3px 0 var(--shadow-dark);
+    min-width: 70px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        font-size: 10px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    .main-nav {
+        flex-direction: column;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        font-size: 8px;
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    header h1 {
+        font-size: 14px;
+    }
+    
+    .login-box {
+        margin: 40px auto;
+        padding: 25px;
+    }
+    
+    .login-box h1 {
+        font-size: 16px;
+    }
+    
+    .content-section h2 {
+        font-size: 12px;
+    }
+}
+
+/* Scrollbar Styling (8-bit) */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+    border: 2px solid var(--border-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--mario-red);
+    border: 2px solid var(--border-black);
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--mario-yellow);
+}
+
+/* Animations */
+@keyframes pixel-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.btn-primary:hover {
+    animation: pixel-bounce 0.3s ease;
+}
+
+/* Selection Color */
+::selection {
+    background: var(--mario-yellow);
+    color: var(--border-black);
+}
+
+/* ENHANCED UI ADDITIONS */
+
+/* Section Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Header Info */
+.header-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#sessionInfo {
+    font-size: 9px;
+    color: var(--mario-yellow);
+    text-shadow: 2px 2px 0 var(--border-black);
+}
+
+#userName {
+    color: var(--mario-green);
+    font-weight: bold;
+}
+
+/* Nav Icons */
+.nav-icon {
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+/* Help Box */
+.help-box {
+    display: none;
+    background: var(--bg-dark);
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 4px solid var(--mario-blue);
+    box-shadow: 4px 4px 0 var(--mario-blue);
+}
+
+.help-box.show {
+    display: block;
+}
+
+.help-box h4 {
+    color: var(--mario-yellow);
+    font-size: 11px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0 var(--border-black);
+}
+
+.help-box p {
+    font-size: 9px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.help-box ol, .help-box ul {
+    margin-left: 20px;
+    font-size: 9px;
+    line-height: 1.8;
+}
+
+.help-box li {
+    margin-bottom: 8px;
+}
+
+.help-box strong {
+    color: var(--mario-yellow);
+}
+
+.btn-help {
+    background: var(--mario-blue);
+    color: var(--text-white);
+    padding: 8px 15px;
+    border: 3px solid var(--border-black);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 9px;
+    cursor: pointer;
+    text-shadow: 2px 2px 0 var(--border-black);
+    box-shadow: 3px 3px 0 var(--shadow-dark);
+    transition: all 0.1s;
+}
+
+.btn-help:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--shadow-dark);
+}
+
+/* Sample Data Section */
+.sample-data-section {
+    background: var(--bg-light);
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 4px solid var(--mario-green);
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+.sample-data-section h3 {
+    color: var(--mario-green);
+    font-size: 11px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0 var(--border-black);
+}
+
+.sample-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-sample {
+    background: var(--mario-green);
+    color: var(--text-white);
+    padding: 10px 15px;
+    border: 3px solid var(--border-black);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    cursor: pointer;
+    text-shadow: 2px 2px 0 var(--border-black);
+    box-shadow: 3px 3px 0 var(--shadow-dark);
+    transition: all 0.1s;
+    flex: 1;
+    min-width: 140px;
+}
+
+.btn-sample:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--shadow-dark);
+    background: var(--mario-yellow);
+    color: var(--border-black);
+}
+
+.btn-clear {
+    background: var(--mario-red);
+}
+
+.btn-clear:hover {
+    background: #ff6b6b;
+}
+
+/* Form Row */
+.form-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* Help Text */
+.help-text {
+    display: block;
+    margin-top: 5px;
+    font-size: 8px;
+    color: var(--mario-blue);
+    font-style: italic;
+}
+
+/* Comparison Section */
+.comparison-section {
+    background: var(--bg-dark);
+    padding: 20px;
+    margin: 20px 0;
+    border: 4px solid var(--mario-yellow);
+    box-shadow: 4px 4px 0 var(--mario-yellow);
+}
+
+.comparison-section h3 {
+    color: var(--mario-yellow);
+    font-size: 12px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0 var(--border-black);
+}
+
+.comparison-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.comparison-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.comparison-label {
+    min-width: 100px;
+    font-size: 9px;
+    color: var(--text-white);
+}
+
+.comparison-bar {
+    flex: 1;
+    height: 30px;
+    background: var(--mario-blue);
+    border: 3px solid var(--border-black);
+    position: relative;
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+.comparison-value {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 9px;
+    color: var(--text-white);
+    text-shadow: 2px 2px 0 var(--border-black);
+}
+
+.comparison-bar.best {
+    background: var(--mario-green);
+}
+
+.comparison-bar.worst {
+    background: var(--mario-red);
+}
+
+/* Export Section */
+.export-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--bg-light);
+    border: 3px solid var(--border-black);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Loading State */
+.loading {
+    display: inline-block;
+    font-size: 9px;
+    color: var(--mario-yellow);
+    text-shadow: 2px 2px 0 var(--border-black);
+}
+
+.loading::after {
+    content: '...';
+    animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
+
+/* Success Message */
+.success-message {
+    background: rgba(92, 171, 58, 0.2);
+    border: 3px solid var(--mario-green);
+    color: var(--mario-green);
+    padding: 12px;
+    margin: 15px 0;
+    font-size: 9px;
+    text-shadow: 1px 1px 0 var(--border-black);
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.3);
+    display: none;
+}
+
+.success-message.show {
+    display: block;
+}
+
+/* Better Matrix Display */
+.matrix-container {
+    margin-bottom: 30px;
+    padding: 15px;
+    background: var(--bg-light);
+    border: 3px solid var(--border-black);
+}
+
+/* Improved Mobile Styles */
+@media (max-width: 768px) {
+    .sample-buttons {
+        flex-direction: column;
+    }
+    
+    .btn-sample {
+        width: 100%;
+        min-width: 100%;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .form-row .form-group {
+        width: 100%;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .header-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .export-section {
+        flex-direction: column;
+    }
+    
+    .comparison-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .comparison-bar {
+        width: 100%;
+    }
+}
+
+/* Improved Table Responsiveness */
+@media (max-width: 768px) {
+    .matrix {
+        font-size: 8px;
+    }
+    
+    .matrix th,
+    .matrix td {
+        padding: 6px 8px;
+        min-width: 50px;
+    }
+    
+    .matrix input {
+        width: 45px;
+        font-size: 8px;
+    }
+    
+    .page-table {
+        font-size: 7px;
+    }
+    
+    .page-table th,
+    .page-table td {
+        padding: 6px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .main-nav,
+    .btn-secondary,
+    .btn-help,
+    .sample-data-section,
+    .export-section {
+        display: none;
+    }
+    
+    .content-section {
+        display: block !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+}
+
+/* Tooltip (Optional Enhancement) */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-dark);
+    color: var(--text-white);
+    padding: 8px 12px;
+    border: 3px solid var(--mario-yellow);
+    font-size: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+}
+
