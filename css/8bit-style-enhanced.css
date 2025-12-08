@@ -69,11 +69,9 @@ body::before {
     margin: 80px auto;
     background: var(--bg-medium);
     padding: 40px;
-    border: 6px solid var(--border-black);
-    box-shadow: 
-        8px 8px 0 var(--shadow-dark),
-        inset -4px -4px 0 rgba(0,0,0,0.3),
-        inset 4px 4px 0 rgba(255,255,255,0.1);
+    border: 3px solid var(--border-black);
+    border-radius: 0px;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 1;
 }
@@ -81,13 +79,14 @@ body::before {
 .login-box::before {
     content: '';
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
     background: var(--mario-red);
     z-index: -1;
-    border: 4px solid var(--border-black);
+    border: 3px solid var(--border-black);
+    border-radius: 0px;
 }
 
 .login-box h1 {
@@ -122,14 +121,13 @@ body::before {
 .form-group select {
     width: 100%;
     padding: 12px;
-    border: 4px solid var(--border-black);
+    border: 3px solid var(--border-black);
+    border-radius: 0px;
     background: var(--bg-dark);
     color: var(--text-white);
     font-family: 'Press Start 2P', cursive;
     font-size: 10px;
-    box-shadow: 
-        inset 3px 3px 0 rgba(0,0,0,0.5),
-        inset -2px -2px 0 rgba(255,255,255,0.1);
+    box-shadow: inset 3px 3px 0 rgba(0,0,0,0.4);
     transition: all 0.1s;
 }
 
@@ -138,8 +136,7 @@ body::before {
     outline: none;
     border-color: var(--mario-yellow);
     box-shadow: 
-        inset 3px 3px 0 rgba(0,0,0,0.5),
-        inset -2px -2px 0 rgba(255,255,255,0.1),
+        inset 3px 3px 0 rgba(0,0,0,0.4),
         0 0 0 3px rgba(251, 208, 0, 0.3);
 }
 
@@ -148,33 +145,28 @@ body::before {
     background: var(--mario-red);
     color: var(--text-white);
     padding: 15px 30px;
-    border: 4px solid var(--border-black);
+    border: 3px solid var(--border-black);
+    border-radius: 0px;
     font-family: 'Press Start 2P', cursive;
     font-size: 10px;
     cursor: pointer;
     width: 100%;
     margin-top: 10px;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0 var(--border-black);
-    box-shadow: 
-        4px 4px 0 var(--shadow-dark),
-        inset -2px -2px 0 rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
     transition: all 0.1s;
     position: relative;
 }
 
 .btn-primary:hover {
     transform: translate(2px, 2px);
-    box-shadow: 
-        2px 2px 0 var(--shadow-dark),
-        inset -2px -2px 0 rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
 }
 
 .btn-primary:active {
     transform: translate(4px, 4px);
-    box-shadow: 
-        1px 1px 0 var(--shadow-dark),
-        inset -2px -2px 0 rgba(0,0,0,0.3);
+    box-shadow: none;
 }
 
 .btn-secondary {
@@ -182,22 +174,24 @@ body::before {
     color: var(--text-white);
     padding: 10px 20px;
     border: 3px solid var(--border-black);
+    border-radius: 0px;
     font-family: 'Press Start 2P', cursive;
     font-size: 9px;
     cursor: pointer;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0 var(--border-black);
-    box-shadow: 
-        3px 3px 0 var(--shadow-dark),
-        inset -2px -2px 0 rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
     transition: all 0.1s;
 }
 
 .btn-secondary:hover {
-    transform: translate(1px, 1px);
-    box-shadow: 
-        2px 2px 0 var(--shadow-dark),
-        inset -2px -2px 0 rgba(0,0,0,0.3);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.btn-secondary:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
 }
 
 /* Error Message */
@@ -251,17 +245,16 @@ header h1 {
 
 .nav-btn {
     padding: 15px 25px;
-    border: 4px solid var(--border-black);
+    border: 3px solid var(--border-black);
+    border-radius: 0px;
     background: var(--bg-light);
     color: var(--text-white);
     font-family: 'Press Start 2P', cursive;
     font-size: 9px;
     cursor: pointer;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0 var(--border-black);
-    box-shadow: 
-        4px 4px 0 var(--shadow-dark),
-        inset -2px -2px 0 rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
     transition: all 0.1s;
     flex: 1;
     min-width: 150px;
@@ -269,18 +262,20 @@ header h1 {
 
 .nav-btn:hover {
     transform: translate(2px, 2px);
-    box-shadow: 
-        2px 2px 0 var(--shadow-dark),
-        inset -2px -2px 0 rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
     background: var(--mario-blue);
+}
+
+.nav-btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
 }
 
 .nav-btn.active {
     background: var(--mario-green);
     color: var(--text-white);
-    box-shadow: 
-        2px 2px 0 var(--shadow-dark),
-        inset -2px -2px 0 rgba(0,0,0,0.3);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
 }
 
 /* Content Sections */
@@ -288,10 +283,9 @@ header h1 {
     display: none;
     background: var(--bg-medium);
     padding: 30px;
-    border: 5px solid var(--border-black);
-    box-shadow: 
-        6px 6px 0 var(--shadow-dark),
-        inset -3px -3px 0 rgba(0,0,0,0.3);
+    border: 3px solid var(--border-black);
+    border-radius: 0px;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
 }
 
 .content-section.active {
@@ -697,17 +691,23 @@ header h1 {
     color: var(--text-white);
     padding: 8px 15px;
     border: 3px solid var(--border-black);
+    border-radius: 0px;
     font-family: 'Press Start 2P', cursive;
     font-size: 9px;
     cursor: pointer;
-    text-shadow: 2px 2px 0 var(--border-black);
-    box-shadow: 3px 3px 0 var(--shadow-dark);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
     transition: all 0.1s;
 }
 
 .btn-help:hover {
-    transform: translate(1px, 1px);
-    box-shadow: 2px 2px 0 var(--shadow-dark);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.btn-help:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
 }
 
 /* Sample Data Section */
@@ -715,8 +715,9 @@ header h1 {
     background: var(--bg-light);
     padding: 20px;
     margin-bottom: 20px;
-    border: 4px solid var(--mario-green);
-    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.3);
+    border: 3px solid var(--mario-green);
+    border-radius: 0px;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
 .sample-data-section h3 {
@@ -896,6 +897,8 @@ header h1 {
     padding: 15px;
     background: var(--bg-light);
     border: 3px solid var(--border-black);
+    border-radius: 0px;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
