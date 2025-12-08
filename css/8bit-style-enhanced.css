@@ -278,105 +278,90 @@ body::before {
     75% { transform: translateX(10px); }
 }
 
-/* CSS Pixel Art Character - Floppy Disk */
-.pixel-character {
+/* CSS Pixel Art Computer */
+.pixel-computer {
     position: absolute;
-    top: -55px;
-    left: 0;
-    width: 4px;
-    height: 4px;
-    animation: slide 8s linear infinite;
-    box-shadow:
-        /* Dark outline */
-        0 0 0 4px #2c2c2c,
-        4px 0 0 4px #2c2c2c,
-        8px 0 0 4px #2c2c2c,
-        12px 0 0 4px #2c2c2c,
-        16px 0 0 4px #2c2c2c,
-        20px 0 0 4px #2c2c2c,
-        24px 0 0 4px #2c2c2c,
-        28px 0 0 4px #2c2c2c,
-        
-        /* Row 2 */
-        0 4px 0 4px #2c2c2c,
-        4px 4px 0 4px #4a4a4a,
-        8px 4px 0 4px #4a4a4a,
-        12px 4px 0 4px #4a4a4a,
-        16px 4px 0 4px #4a4a4a,
-        20px 4px 0 4px #4a4a4a,
-        24px 4px 0 4px #4a4a4a,
-        28px 4px 0 4px #2c2c2c,
-        
-        /* Row 3 - Label area (white) */
-        0 8px 0 4px #2c2c2c,
-        4px 8px 0 4px #e0e0e0,
-        8px 8px 0 4px #e0e0e0,
-        12px 8px 0 4px #e0e0e0,
-        16px 8px 0 4px #e0e0e0,
-        20px 8px 0 4px #e0e0e0,
-        24px 8px 0 4px #e0e0e0,
-        28px 8px 0 4px #2c2c2c,
-        
-        /* Row 4 */
-        0 12px 0 4px #2c2c2c,
-        4px 12px 0 4px #e0e0e0,
-        8px 12px 0 4px #e0e0e0,
-        12px 12px 0 4px #e0e0e0,
-        16px 12px 0 4px #e0e0e0,
-        20px 12px 0 4px #e0e0e0,
-        24px 12px 0 4px #e0e0e0,
-        28px 12px 0 4px #2c2c2c,
-        
-        /* Row 5 */
-        0 16px 0 4px #2c2c2c,
-        4px 16px 0 4px #4a4a4a,
-        8px 16px 0 4px #4a4a4a,
-        12px 16px 0 4px #2c2c2c,
-        16px 16px 0 4px #2c2c2c,
-        20px 16px 0 4px #4a4a4a,
-        24px 16px 0 4px #4a4a4a,
-        28px 16px 0 4px #2c2c2c,
-        
-        /* Row 6 */
-        0 20px 0 4px #2c2c2c,
-        4px 20px 0 4px #4a4a4a,
-        8px 20px 0 4px #4a4a4a,
-        12px 20px 0 4px #4a4a4a,
-        16px 20px 0 4px #4a4a4a,
-        20px 20px 0 4px #4a4a4a,
-        24px 20px 0 4px #4a4a4a,
-        28px 20px 0 4px #2c2c2c,
-        
-        /* Row 7 */
-        0 24px 0 4px #2c2c2c,
-        4px 24px 0 4px #4a4a4a,
-        8px 24px 0 4px #4a4a4a,
-        12px 24px 0 4px #4a4a4a,
-        16px 24px 0 4px #4a4a4a,
-        20px 24px 0 4px #4a4a4a,
-        24px 24px 0 4px #4a4a4a,
-        28px 24px 0 4px #2c2c2c,
-        
-        /* Bottom row */
-        0 28px 0 4px #2c2c2c,
-        4px 28px 0 4px #2c2c2c,
-        8px 28px 0 4px #2c2c2c,
-        12px 28px 0 4px #2c2c2c,
-        16px 28px 0 4px #2c2c2c,
-        20px 28px 0 4px #2c2c2c,
-        24px 28px 0 4px #2c2c2c,
-        28px 28px 0 4px #2c2c2c;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 50px;
+    background:
+        /* Monitor screen */
+        linear-gradient(#1a1a2e, #1a1a2e) 10px 5px / 40px 25px,
+        /* Monitor border */
+        linear-gradient(90deg, #4a4a4a 5px, #6a6a6a 5px) 5px 0 / 50px 30px,
+        /* Monitor stand */
+        linear-gradient(#4a4a4a, #4a4a4a) 22px 30px / 16px 8px,
+        /* Monitor base */
+        linear-gradient(#2c2c2c, #2c2c2c) 15px 38px / 30px 4px;
+    background-repeat: no-repeat;
+    animation: float 3s ease-in-out infinite;
 }
 
-@keyframes slide {
-    0% {
-        left: -40px;
+.pixel-computer::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    top: 10px;
+    left: 15px;
+    background-color: var(--mario-green);
+    animation: osText 4s linear infinite;
+}
+
+@keyframes osText {
+    0%, 20% {
+        box-shadow:
+            0 0 0 var(--mario-green),
+            5px 0 0 var(--mario-green),
+            10px 0 0 var(--mario-green),
+            15px 0 0 var(--mario-green),
+            20px 0 0 var(--mario-green);
+    }
+    25%, 45% {
+        box-shadow:
+            0 0 0 var(--mario-green),
+            0 5px 0 var(--mario-green),
+            0 10px 0 var(--mario-green),
+            5px 0 0 var(--mario-green),
+            5px 5px 0 var(--mario-green),
+            5px 10px 0 var(--mario-green),
+            10px 5px 0 var(--mario-green),
+            15px 0 0 var(--mario-green),
+            15px 5px 0 var(--mario-green),
+            15px 10px 0 var(--mario-green),
+            20px 0 0 var(--mario-green),
+            20px 5px 0 var(--mario-green),
+            20px 10px 0 var(--mario-green);
+    }
+    50%, 70% {
+        box-shadow:
+            0 0 0 var(--mario-yellow),
+            5px 0 0 var(--mario-yellow),
+            10px 0 0 var(--mario-yellow),
+            15px 0 0 var(--mario-yellow),
+            20px 0 0 var(--mario-yellow),
+            25px 0 0 var(--mario-yellow);
+    }
+    75%, 100% {
+        box-shadow:
+            0 0 0 var(--mario-blue),
+            5px 5px 0 var(--mario-blue),
+            10px 0 0 var(--mario-blue),
+            15px 5px 0 var(--mario-blue),
+            20px 0 0 var(--mario-blue),
+            25px 5px 0 var(--mario-blue);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
     }
     50% {
-        left: calc(100% - 20px);
-    }
-    100% {
-        left: -40px;
+        transform: translateX(-50%) translateY(-8px);
     }
 }
 
