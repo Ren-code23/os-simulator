@@ -278,6 +278,34 @@ body::before {
     75% { transform: translateX(10px); }
 }
 
+/* Login Hint */
+.login-hint {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(33, 150, 243, 0.1);
+    border: 3px solid var(--mario-blue);
+    border-radius: 0px;
+    text-align: center;
+    font-size: 9px;
+    line-height: 1.8;
+}
+
+.login-hint p {
+    margin: 5px 0;
+    color: var(--text-white);
+}
+
+.login-hint p:first-child {
+    color: var(--mario-yellow);
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+.login-hint strong {
+    color: var(--mario-green);
+    font-size: 10px;
+}
+
 /* Dashboard Header */
 header {
     display: flex;
