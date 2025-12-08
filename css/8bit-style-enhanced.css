@@ -281,11 +281,11 @@ body::before {
 /* CSS Pixel Art Computer - Large & Detailed */
 .pixel-computer {
     position: absolute;
-    top: -140px;
+    top: -60px; /* closer to the box so it's visible */
     left: 50%;
     transform: translateX(-50%);
-    width: 180px;
-    height: 120px;
+    width: 200px;  /* slightly larger */
+    height: 135px;
     background:
         /* Monitor screen glow */
         radial-gradient(circle, rgba(46, 213, 115, 0.3) 0%, transparent 70%) 45px 15px / 90px 60px,
@@ -305,7 +305,7 @@ body::before {
         linear-gradient(90deg, transparent 10px, rgba(0,0,0,0.3) 10px 80px, transparent 80px) 40px 115px / 100px 5px;
     background-repeat: no-repeat;
     animation: computerFloat 4s ease-in-out infinite;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.6));
 }
 
 .pixel-computer::before {
