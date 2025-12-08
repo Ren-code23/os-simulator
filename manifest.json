@@ -2,9 +2,10 @@
   "name": "OS Simulator",
   "short_name": "OS Sim",
   "description": "Operating System Algorithm Simulator - Deadlock, Page Replacement, and Scheduling",
-  "start_url": "/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#1a1a2e",
   "theme_color": "#1a1a2e",
   "orientation": "any"
 }

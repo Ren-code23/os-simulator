@@ -686,12 +686,26 @@ header h1 {
     }
     
     .login-box {
-        margin: 40px auto;
-        padding: 25px;
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 95%;
     }
     
     .login-box h1 {
-        font-size: 16px;
+        font-size: 14px;
+    }
+    
+    .login-hint {
+        font-size: 8px;
+        padding: 10px;
+    }
+    
+    .login-hint p:first-child {
+        font-size: 9px;
+    }
+    
+    .login-hint strong {
+        font-size: 9px;
     }
     
     .content-section h2 {
