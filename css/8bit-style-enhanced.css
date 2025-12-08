@@ -250,19 +250,32 @@ body::before {
 
 /* Error Message */
 .error-message {
-    color: var(--mario-red);
+    color: var(--text-white);
     margin: 15px 0;
-    padding: 12px;
-    background: rgba(229, 37, 33, 0.2);
-    border: 3px solid var(--mario-red);
-    font-size: 9px;
+    padding: 15px;
+    background: linear-gradient(180deg, #E53935 0%, #C62828 100%);
+    border: 3px solid var(--border-black);
+    border-radius: 0px;
+    font-size: 10px;
+    line-height: 1.6;
     display: none;
-    text-shadow: 1px 1px 0 var(--border-black);
-    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.3);
+    text-align: center;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+    box-shadow: 
+        inset -2px -2px 0 rgba(0, 0, 0, 0.3),
+        inset 2px 2px 0 rgba(255, 255, 255, 0.2),
+        4px 4px 0 rgba(0, 0, 0, 0.5);
+    animation: shake 0.4s ease-in-out;
 }
 
 .error-message.show {
     display: block;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
 }
 
 /* Dashboard Header */
