@@ -3,115 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#3B82F6">
+    <meta name="theme-color" content="#1a1a2e">
     <title>OS Simulator - Dashboard</title>
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="css/8bit-style.css">
+    <link rel="stylesheet" href="css/8bit-style-enhanced.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>OS Simulator Dashboard</h1>
-            <button id="logoutBtn" class="btn-secondary">Logout</button>
+            <h1>OS SIMULATOR</h1>
+            <div class="header-info">
+                <span id="sessionInfo">Logged in as: <span id="userName"></span></span>
+                <button id="logoutBtn" class="btn-secondary">Logout</button>
+            </div>
         </header>
         
         <nav class="main-nav">
-            <button class="nav-btn active" data-page="deadlock">Deadlock Algorithm</button>
-            <button class="nav-btn" data-page="paging">Page Replacement</button>
-            <button class="nav-btn" data-page="scheduling">Scheduling</button>
+            <button class="nav-btn active" data-page="deadlock">
+                <span class="nav-icon">💾</span>
+                Deadlock
+            </button>
+            <button class="nav-btn" data-page="paging">
+                <span class="nav-icon">📄</span>
+                Page Replacement
+            </button>
+            <button class="nav-btn" data-page="scheduling">
+                <span class="nav-icon">⏱️</span>
+                Scheduling
+            </button>
         </nav>
 
         <main>
             <!-- Deadlock Algorithm Section -->
             <section id="deadlock-section" class="content-section active">
-                <h2>Deadlock / Resource Allocation (Banker's Algorithm)</h2>
+                <div class="section-header">
+                    <h2>Deadlock / Resource Allocation</h2>
+                    <button class="btn-help" onclick="toggleHelp('deadlock-help')">❓ Help</button>
+                </div>
+                
+                <div id="deadlock-help" class="help-box">
+                    <h4>Banker's Algorithm</h4>
+                    <p><strong>What it does:</strong> Prevents deadlock by checking if resource allocation keeps the system in a safe state.</p>
+                    <p><strong>How it works:</strong></p>
+                    <ol>
+                        <li>Calculate Need matrix (Max - Allocation)</li>
+                        <li>Find a process that can finish with available resources</li>
+                        <li>If found, assume it finishes and releases resources</li>
+                        <li>Repeat until all processes finish (SAFE) or none can (UNSAFE)</li>
+                    </ol>
+                    <p><strong>When to use:</strong> Resource allocation in operating systems to avoid deadlock.</p>
+                </div>
+
                 <div class="algorithm-container">
                     <div class="input-section">
                         <div class="error-message"></div>
-                        <h3>Input Parameters</h3>
-                        <div class="form-group">
-                            <label for="numProcesses">Number of Processes:</label>
-                            <input type="number" id="numProcesses" min="1" max="10" value="3">
+                        
+                        <div class="sample-data-section">
+                            <h3>Quick Start</h3>
+                            <div class="sample-buttons">
+                                <button class="btn-sample" onclick="loadDeadlockSample(1)">📝 Safe State Example</button>
+                                <button class="btn-sample" onclick="loadDeadlockSample(2)">⚠️ Unsafe State Example</button>
+                                <button class="btn-sample" onclick="loadDeadlockSample(3)">📚 Complex Example</button>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="numResources">Number of Resources:</label>
-                            <input type="number" id="numResources" min="1" max="10" value="3">
+
+                        <h3>Setup Matrices</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="numProcesses">Number of Processes:</label>
+                                <input type="number" id="numProcesses" min="1" max="10" value="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="numResources">Number of Resources:</label>
+                                <input type="number" id="numResources" min="1" max="10" value="3">
+                            </div>
                         </div>
+                        <button class="btn-primary" onclick="setupDeadlockMatrices()">Generate Matrices</button>
                     </div>
                     
                     <div id="deadlockMatrices" class="matrices-section"></div>
+                    
                     <div id="deadlockResults" class="results-section"></div>
+                    
+                    <div id="deadlockExport" class="export-section" style="display:none;">
+                        <button class="btn-secondary" onclick="exportDeadlockResults()">📥 Export Results</button>
+                        <button class="btn-secondary" onclick="copyDeadlockResults()">📋 Copy to Clipboard</button>
+                    </div>
                 </div>
             </section>
 
             <!-- Page Replacement Section -->
             <section id="paging-section" class="content-section">
-                <h2>Page Replacement Algorithms</h2>
+                <div class="section-header">
+                    <h2>Page Replacement Algorithms</h2>
+                    <button class="btn-help" onclick="toggleHelp('paging-help')">❓ Help</button>
+                </div>
+                
+                <div id="paging-help" class="help-box">
+                    <h4>Page Replacement Algorithms</h4>
+                    <p><strong>What they do:</strong> Decide which page to remove from memory when a new page is needed.</p>
+                    <p><strong>Algorithms:</strong></p>
+                    <ul>
+                        <li><strong>FIFO:</strong> Replace the oldest page (first in, first out)</li>
+                        <li><strong>LRU:</strong> Replace the least recently used page</li>
+                        <li><strong>Optimal:</strong> Replace the page that won't be used for longest time (theoretical best)</li>
+                    </ul>
+                    <p><strong>Goal:</strong> Minimize page faults (when requested page isn't in memory).</p>
+                </div>
+
                 <div class="algorithm-container">
                     <div class="input-section">
                         <div class="error-message"></div>
+                        
+                        <div class="sample-data-section">
+                            <h3>Quick Start</h3>
+                            <div class="sample-buttons">
+                                <button class="btn-sample" onclick="loadPagingSample(1)">📝 Classic Example</button>
+                                <button class="btn-sample" onclick="loadPagingSample(2)">🔢 Extended Sequence</button>
+                                <button class="btn-sample" onclick="loadPagingSample(3)">📚 Complex Case</button>
+                            </div>
+                        </div>
+
                         <h3>Input Parameters</h3>
                         <div class="form-group">
                             <label for="referenceString">Reference String (comma-separated):</label>
                             <input type="text" id="referenceString" placeholder="7,0,1,2,0,3,0,4,2,3,0,3,2" value="7,0,1,2,0,3,0,4,2,3,0,3,2">
+                            <small class="help-text">Enter page numbers separated by commas</small>
                         </div>
                         <div class="form-group">
                             <label for="numFrames">Number of Frames:</label>
-                            <input type="number" id="numFrames" min="1" value="3">
+                            <input type="number" id="numFrames" min="1" max="10" value="3">
+                            <small class="help-text">Number of page frames available in memory</small>
                         </div>
                     </div>
                     
+                    <div id="pagingComparison" class="comparison-section"></div>
                     <div id="pagingResults" class="results-section"></div>
+                    
+                    <div id="pagingExport" class="export-section" style="display:none;">
+                        <button class="btn-secondary" onclick="exportPagingResults()">📥 Export Results</button>
+                        <button class="btn-secondary" onclick="copyPagingResults()">📋 Copy to Clipboard</button>
+                    </div>
                 </div>
             </section>
 
-            <!-- Scheduling Section (Optional) -->
+            <!-- Scheduling Section -->
             <section id="scheduling-section" class="content-section">
-                <h2>Scheduling Algorithms</h2>
+                <div class="section-header">
+                    <h2>CPU Scheduling Algorithms</h2>
+                    <button class="btn-help" onclick="toggleHelp('scheduling-help')">❓ Help</button>
+                </div>
+                
+                <div id="scheduling-help" class="help-box">
+                    <h4>CPU Scheduling Algorithms</h4>
+                    <p><strong>What they do:</strong> Decide which process gets CPU time and when.</p>
+                    <p><strong>Algorithms:</strong></p>
+                    <ul>
+                        <li><strong>FCFS:</strong> First-Come, First-Served - processes run in order of arrival</li>
+                        <li><strong>SJF:</strong> Shortest Job First - shortest processes run first</li>
+                        <li><strong>Priority:</strong> Higher priority processes run first</li>
+                        <li><strong>Round Robin:</strong> Each process gets a time quantum in circular order</li>
+                    </ul>
+                    <p><strong>Metrics:</strong> Waiting time (time waiting in queue), Turnaround time (total time from arrival to completion)</p>
+                </div>
+
                 <div class="algorithm-container">
                     <div class="input-section">
                         <div class="error-message"></div>
-                        <h3>Add Process</h3>
-                        <div class="form-group">
-                            <label for="processId">Process ID:</label>
-                            <input type="text" id="processId" placeholder="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="arrivalTime">Arrival Time:</label>
-                            <input type="number" id="arrivalTime" value="0" min="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="burstTime">Burst Time:</label>
-                            <input type="number" id="burstTime" value="1" min="1">
-                        </div>
-                        <div id="priorityInput" class="form-group" style="display:none;">
-                            <label for="priority">Priority:</label>
-                            <input type="number" id="priority" value="0" min="0">
-                        </div>
-                        <button id="addProcessBtn" class="btn-secondary">Add Process</button>
                         
-                        <hr style="margin: 20px 0;">
+                        <div class="sample-data-section">
+                            <h3>Quick Start</h3>
+                            <div class="sample-buttons">
+                                <button class="btn-sample" onclick="loadSchedulingSample(1)">📝 Basic Example</button>
+                                <button class="btn-sample" onclick="loadSchedulingSample(2)">🔢 Multiple Processes</button>
+                                <button class="btn-sample" onclick="loadSchedulingSample(3)">📚 Complex Case</button>
+                                <button class="btn-sample btn-clear" onclick="clearProcessList()">🗑️ Clear All</button>
+                            </div>
+                        </div>
+
+                        <h3>Add Process</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="processId">Process ID:</label>
+                                <input type="text" id="processId" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="arrivalTime">Arrival:</label>
+                                <input type="number" id="arrivalTime" value="0" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="burstTime">Burst:</label>
+                                <input type="number" id="burstTime" value="1" min="1">
+                            </div>
+                            <div id="priorityInput" class="form-group" style="display:none;">
+                                <label for="priority">Priority:</label>
+                                <input type="number" id="priority" value="0" min="0">
+                            </div>
+                        </div>
+                        <button id="addProcessBtn" class="btn-secondary">➕ Add Process</button>
+                        
+                        <hr style="margin: 20px 0; border-color: #4a4a4a;">
 
                         <h3>Calculate</h3>
-                        <div class="form-group">
-                            <label for="schedulingAlgorithm">Algorithm:</label>
-                            <select id="schedulingAlgorithm">
-                                <option value="fcfs">First-Come, First-Served (FCFS)</option>
-                                <option value="sjf">Shortest Job First (SJF)</option>
-                                <option value="priority">Priority (Non-Preemptive)</option>
-                                <option value="rr">Round Robin</option>
-                            </select>
-                        </div>
-                        <div id="timeQuantumInput" class="form-group" style="display:none;">
-                            <label for="timeQuantum">Time Quantum:</label>
-                            <input type="number" id="timeQuantum" value="2" min="1">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="schedulingAlgorithm">Algorithm:</label>
+                                <select id="schedulingAlgorithm">
+                                    <option value="fcfs">First-Come, First-Served (FCFS)</option>
+                                    <option value="sjf">Shortest Job First (SJF)</option>
+                                    <option value="priority">Priority (Non-Preemptive)</option>
+                                    <option value="rr">Round Robin</option>
+                                </select>
+                            </div>
+                            <div id="timeQuantumInput" class="form-group" style="display:none;">
+                                <label for="timeQuantum">Time Quantum:</label>
+                                <input type="number" id="timeQuantum" value="2" min="1">
+                            </div>
                         </div>
                         <div id="calculate-error-message" class="error-message"></div>
-                        <button id="calculateSchedulingBtn" class="btn-primary" disabled>Calculate</button>
+                        <button id="calculateSchedulingBtn" class="btn-primary" disabled>🚀 Calculate</button>
                     </div>
                     
                     <div id="processList" class="process-list"></div>
                     <div id="schedulingResults" class="results-section"></div>
+                    
+                    <div id="schedulingExport" class="export-section" style="display:none;">
+                        <button class="btn-secondary" onclick="exportSchedulingResults()">📥 Export Results</button>
+                        <button class="btn-secondary" onclick="copySchedulingResults()">📋 Copy to Clipboard</button>
+                    </div>
                 </div>
             </section>
         </main>
@@ -119,8 +238,10 @@
 
     <script src="js/auth.js"></script>
     <script src="js/dashboard.js"></script>
-    <script src="js/deadlock.js"></script>
-    <script src="js/paging.js"></script>
-    <script src="js/scheduling.js"></script>
+    <script src="js/deadlock-enhanced.js"></script>
+    <script src="js/paging-enhanced.js"></script>
+    <script src="js/scheduling-enhanced.js"></script>
+    <script src="js/helpers.js"></script>
 </body>
 </html>
+

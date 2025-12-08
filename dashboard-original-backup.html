@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3B82F6">
+    <title>OS Simulator - Dashboard</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/8bit-style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>OS Simulator Dashboard</h1>
+            <button id="logoutBtn" class="btn-secondary">Logout</button>
+        </header>
+        
+        <nav class="main-nav">
+            <button class="nav-btn active" data-page="deadlock">Deadlock Algorithm</button>
+            <button class="nav-btn" data-page="paging">Page Replacement</button>
+            <button class="nav-btn" data-page="scheduling">Scheduling</button>
+        </nav>
+
+        <main>
+            <!-- Deadlock Algorithm Section -->
+            <section id="deadlock-section" class="content-section active">
+                <h2>Deadlock / Resource Allocation (Banker's Algorithm)</h2>
+                <div class="algorithm-container">
+                    <div class="input-section">
+                        <div class="error-message"></div>
+                        <h3>Input Parameters</h3>
+                        <div class="form-group">
+                            <label for="numProcesses">Number of Processes:</label>
+                            <input type="number" id="numProcesses" min="1" max="10" value="3">
+                        </div>
+                        <div class="form-group">
+                            <label for="numResources">Number of Resources:</label>
+                            <input type="number" id="numResources" min="1" max="10" value="3">
+                        </div>
+                    </div>
+                    
+                    <div id="deadlockMatrices" class="matrices-section"></div>
+                    <div id="deadlockResults" class="results-section"></div>
+                </div>
+            </section>
+
+            <!-- Page Replacement Section -->
+            <section id="paging-section" class="content-section">
+                <h2>Page Replacement Algorithms</h2>
+                <div class="algorithm-container">
+                    <div class="input-section">
+                        <div class="error-message"></div>
+                        <h3>Input Parameters</h3>
+                        <div class="form-group">
+                            <label for="referenceString">Reference String (comma-separated):</label>
+                            <input type="text" id="referenceString" placeholder="7,0,1,2,0,3,0,4,2,3,0,3,2" value="7,0,1,2,0,3,0,4,2,3,0,3,2">
+                        </div>
+                        <div class="form-group">
+                            <label for="numFrames">Number of Frames:</label>
+                            <input type="number" id="numFrames" min="1" value="3">
+                        </div>
+                    </div>
+                    
+                    <div id="pagingResults" class="results-section"></div>
+                </div>
+            </section>
+
+            <!-- Scheduling Section (Optional) -->
+            <section id="scheduling-section" class="content-section">
+                <h2>Scheduling Algorithms</h2>
+                <div class="algorithm-container">
+                    <div class="input-section">
+                        <div class="error-message"></div>
+                        <h3>Add Process</h3>
+                        <div class="form-group">
+                            <label for="processId">Process ID:</label>
+                            <input type="text" id="processId" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="arrivalTime">Arrival Time:</label>
+                            <input type="number" id="arrivalTime" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="burstTime">Burst Time:</label>
+                            <input type="number" id="burstTime" value="1" min="1">
+                        </div>
+                        <div id="priorityInput" class="form-group" style="display:none;">
+                            <label for="priority">Priority:</label>
+                            <input type="number" id="priority" value="0" min="0">
+                        </div>
+                        <button id="addProcessBtn" class="btn-secondary">Add Process</button>
+                        
+                        <hr style="margin: 20px 0;">
+
+                        <h3>Calculate</h3>
+                        <div class="form-group">
+                            <label for="schedulingAlgorithm">Algorithm:</label>
+                            <select id="schedulingAlgorithm">
+                                <option value="fcfs">First-Come, First-Served (FCFS)</option>
+                                <option value="sjf">Shortest Job First (SJF)</option>
+                                <option value="priority">Priority (Non-Preemptive)</option>
+                                <option value="rr">Round Robin</option>
+                            </select>
+                        </div>
+                        <div id="timeQuantumInput" class="form-group" style="display:none;">
+                            <label for="timeQuantum">Time Quantum:</label>
+                            <input type="number" id="timeQuantum" value="2" min="1">
+                        </div>
+                        <div id="calculate-error-message" class="error-message"></div>
+                        <button id="calculateSchedulingBtn" class="btn-primary" disabled>Calculate</button>
+                    </div>
+                    
+                    <div id="processList" class="process-list"></div>
+                    <div id="schedulingResults" class="results-section"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/deadlock.js"></script>
+    <script src="js/paging.js"></script>
+    <script src="js/scheduling.js"></script>
+</body>
+</html>
