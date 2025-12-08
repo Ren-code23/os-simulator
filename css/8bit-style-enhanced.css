@@ -278,36 +278,105 @@ body::before {
     75% { transform: translateX(10px); }
 }
 
-/* Animated Character */
-.animated-character {
+/* CSS Pixel Art Character - Floppy Disk */
+.pixel-character {
     position: absolute;
-    top: -60px;
+    top: -55px;
     left: 0;
-    font-size: 40px;
-    animation: walk 8s linear infinite;
-    filter: drop-shadow(3px 3px 0 rgba(0, 0, 0, 0.5));
+    width: 4px;
+    height: 4px;
+    animation: slide 8s linear infinite;
+    box-shadow:
+        /* Dark outline */
+        0 0 0 4px #2c2c2c,
+        4px 0 0 4px #2c2c2c,
+        8px 0 0 4px #2c2c2c,
+        12px 0 0 4px #2c2c2c,
+        16px 0 0 4px #2c2c2c,
+        20px 0 0 4px #2c2c2c,
+        24px 0 0 4px #2c2c2c,
+        28px 0 0 4px #2c2c2c,
+        
+        /* Row 2 */
+        0 4px 0 4px #2c2c2c,
+        4px 4px 0 4px #4a4a4a,
+        8px 4px 0 4px #4a4a4a,
+        12px 4px 0 4px #4a4a4a,
+        16px 4px 0 4px #4a4a4a,
+        20px 4px 0 4px #4a4a4a,
+        24px 4px 0 4px #4a4a4a,
+        28px 4px 0 4px #2c2c2c,
+        
+        /* Row 3 - Label area (white) */
+        0 8px 0 4px #2c2c2c,
+        4px 8px 0 4px #e0e0e0,
+        8px 8px 0 4px #e0e0e0,
+        12px 8px 0 4px #e0e0e0,
+        16px 8px 0 4px #e0e0e0,
+        20px 8px 0 4px #e0e0e0,
+        24px 8px 0 4px #e0e0e0,
+        28px 8px 0 4px #2c2c2c,
+        
+        /* Row 4 */
+        0 12px 0 4px #2c2c2c,
+        4px 12px 0 4px #e0e0e0,
+        8px 12px 0 4px #e0e0e0,
+        12px 12px 0 4px #e0e0e0,
+        16px 12px 0 4px #e0e0e0,
+        20px 12px 0 4px #e0e0e0,
+        24px 12px 0 4px #e0e0e0,
+        28px 12px 0 4px #2c2c2c,
+        
+        /* Row 5 */
+        0 16px 0 4px #2c2c2c,
+        4px 16px 0 4px #4a4a4a,
+        8px 16px 0 4px #4a4a4a,
+        12px 16px 0 4px #2c2c2c,
+        16px 16px 0 4px #2c2c2c,
+        20px 16px 0 4px #4a4a4a,
+        24px 16px 0 4px #4a4a4a,
+        28px 16px 0 4px #2c2c2c,
+        
+        /* Row 6 */
+        0 20px 0 4px #2c2c2c,
+        4px 20px 0 4px #4a4a4a,
+        8px 20px 0 4px #4a4a4a,
+        12px 20px 0 4px #4a4a4a,
+        16px 20px 0 4px #4a4a4a,
+        20px 20px 0 4px #4a4a4a,
+        24px 20px 0 4px #4a4a4a,
+        28px 20px 0 4px #2c2c2c,
+        
+        /* Row 7 */
+        0 24px 0 4px #2c2c2c,
+        4px 24px 0 4px #4a4a4a,
+        8px 24px 0 4px #4a4a4a,
+        12px 24px 0 4px #4a4a4a,
+        16px 24px 0 4px #4a4a4a,
+        20px 24px 0 4px #4a4a4a,
+        24px 24px 0 4px #4a4a4a,
+        28px 24px 0 4px #2c2c2c,
+        
+        /* Bottom row */
+        0 28px 0 4px #2c2c2c,
+        4px 28px 0 4px #2c2c2c,
+        8px 28px 0 4px #2c2c2c,
+        12px 28px 0 4px #2c2c2c,
+        16px 28px 0 4px #2c2c2c,
+        20px 28px 0 4px #2c2c2c,
+        24px 28px 0 4px #2c2c2c,
+        28px 28px 0 4px #2c2c2c;
 }
 
-@keyframes walk {
+@keyframes slide {
     0% {
-        left: -60px;
-        transform: scaleX(1);
-    }
-    48% {
-        left: calc(100% - 40px);
-        transform: scaleX(1);
+        left: -40px;
     }
     50% {
-        left: calc(100% - 40px);
-        transform: scaleX(-1);
-    }
-    98% {
-        left: -60px;
-        transform: scaleX(-1);
+        left: calc(100% - 20px);
     }
     100% {
-        left: -60px;
-        transform: scaleX(1);
+        left: -40px;
     }
 }
 
