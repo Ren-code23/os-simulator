@@ -739,15 +739,13 @@ header h1 {
     padding: 18px 24px;
     border: 4px solid var(--border-black);
     border-radius: 8px;
-    font-family: 'Press Start 2P', 'Courier New', monospace;
-    font-size: 10px;
-    line-height: 2.2;
-    letter-spacing: 0px;
-    word-spacing: 4px;
+    font-family: 'Courier New', 'Consolas', monospace;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: 1px;
     cursor: pointer;
-    text-shadow: 
-        2px 2px 0 var(--border-black),
-        -1px -1px 0 rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     box-shadow: 
         inset 0 -4px 0 rgba(0, 0, 0, 0.2),
         inset 0 2px 0 rgba(255, 255, 255, 0.2),
@@ -756,14 +754,13 @@ header h1 {
     transition: all 0.15s ease;
     position: relative;
     overflow: visible;
-    white-space: normal;
+    white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     min-height: 60px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    text-transform: uppercase;
 }
 
 .btn-sample::before {
@@ -809,10 +806,8 @@ header h1 {
 
 .btn-sample:nth-child(2) {
     background: linear-gradient(180deg, #FFC107 0%, #FFA000 100%);
-    color: var(--border-black);
-    text-shadow: 
-        1px 1px 0 rgba(255, 255, 255, 0.5),
-        2px 2px 0 var(--border-black);
+    color: #000;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 .btn-sample:nth-child(2):hover {
