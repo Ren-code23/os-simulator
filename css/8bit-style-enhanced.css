@@ -278,90 +278,149 @@ body::before {
     75% { transform: translateX(10px); }
 }
 
-/* CSS Pixel Art Computer */
+/* CSS Pixel Art Computer - Large & Detailed */
 .pixel-computer {
     position: absolute;
-    top: -80px;
+    top: -140px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 50px;
+    width: 180px;
+    height: 120px;
     background:
+        /* Monitor screen glow */
+        radial-gradient(circle, rgba(46, 213, 115, 0.3) 0%, transparent 70%) 45px 15px / 90px 60px,
         /* Monitor screen */
-        linear-gradient(#1a1a2e, #1a1a2e) 10px 5px / 40px 25px,
-        /* Monitor border */
-        linear-gradient(90deg, #4a4a4a 5px, #6a6a6a 5px) 5px 0 / 50px 30px,
-        /* Monitor stand */
-        linear-gradient(#4a4a4a, #4a4a4a) 22px 30px / 16px 8px,
-        /* Monitor base */
-        linear-gradient(#2c2c2c, #2c2c2c) 15px 38px / 30px 4px;
+        linear-gradient(135deg, #1a1a2e 0%, #0f1419 100%) 30px 10px / 120px 70px,
+        /* Screen border - inner */
+        linear-gradient(#2e7d32, #2e7d32) 25px 5px / 130px 80px,
+        /* Monitor body - gradient */
+        linear-gradient(180deg, #6a6a6a 0%, #4a4a4a 50%, #3a3a3a 100%) 20px 0 / 140px 90px,
+        /* Monitor outer border */
+        linear-gradient(#2c2c2c, #2c2c2c) 15px 0 / 150px 90px,
+        /* Stand neck */
+        linear-gradient(90deg, #3a3a3a 8px, #4a4a4a 8px 12px, #2c2c2c 12px) 72px 90px / 36px 15px,
+        /* Stand base */
+        linear-gradient(180deg, #4a4a4a 0%, #2c2c2c 100%) 45px 105px / 90px 12px,
+        /* Stand base shadow */
+        linear-gradient(90deg, transparent 10px, rgba(0,0,0,0.3) 10px 80px, transparent 80px) 40px 115px / 100px 5px;
     background-repeat: no-repeat;
-    animation: float 3s ease-in-out infinite;
+    animation: computerFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
 }
 
 .pixel-computer::before {
     content: "";
     display: block;
     position: absolute;
-    width: 5px;
-    height: 5px;
-    top: 10px;
-    left: 15px;
+    width: 8px;
+    height: 8px;
+    top: 25px;
+    left: 50px;
     background-color: var(--mario-green);
-    animation: osText 4s linear infinite;
+    animation: screenAnimation 6s linear infinite;
 }
 
-@keyframes osText {
-    0%, 20% {
+.pixel-computer::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    top: 65px;
+    right: 35px;
+    background-color: var(--mario-red);
+    border-radius: 50%;
+    animation: powerBlink 2s ease-in-out infinite;
+}
+
+@keyframes screenAnimation {
+    0%, 15% {
         box-shadow:
-            0 0 0 var(--mario-green),
-            5px 0 0 var(--mario-green),
-            10px 0 0 var(--mario-green),
-            15px 0 0 var(--mario-green),
-            20px 0 0 var(--mario-green);
+            /* "OS" text */
+            0 0 0 8px var(--mario-green),
+            0 8px 0 8px var(--mario-green),
+            0 16px 0 8px var(--mario-green),
+            8px 0 0 8px var(--mario-green),
+            8px 16px 0 8px var(--mario-green),
+            24px 0 0 8px var(--mario-green),
+            24px 8px 0 8px var(--mario-green),
+            24px 16px 0 8px var(--mario-green),
+            32px 0 0 8px var(--mario-green),
+            32px 8px 0 8px var(--mario-green),
+            32px 16px 0 8px var(--mario-green),
+            40px 8px 0 8px var(--mario-green);
     }
-    25%, 45% {
+    20%, 35% {
         box-shadow:
-            0 0 0 var(--mario-green),
-            0 5px 0 var(--mario-green),
-            0 10px 0 var(--mario-green),
-            5px 0 0 var(--mario-green),
-            5px 5px 0 var(--mario-green),
-            5px 10px 0 var(--mario-green),
-            10px 5px 0 var(--mario-green),
-            15px 0 0 var(--mario-green),
-            15px 5px 0 var(--mario-green),
-            15px 10px 0 var(--mario-green),
-            20px 0 0 var(--mario-green),
-            20px 5px 0 var(--mario-green),
-            20px 10px 0 var(--mario-green);
+            /* Loading bar */
+            0 0 0 8px var(--mario-yellow),
+            8px 0 0 8px var(--mario-yellow),
+            16px 0 0 8px var(--mario-yellow),
+            24px 0 0 8px var(--mario-yellow),
+            32px 0 0 8px var(--mario-yellow),
+            40px 0 0 8px var(--mario-yellow),
+            48px 0 0 8px var(--mario-yellow),
+            56px 0 0 8px var(--mario-yellow);
     }
-    50%, 70% {
+    40%, 55% {
         box-shadow:
-            0 0 0 var(--mario-yellow),
-            5px 0 0 var(--mario-yellow),
-            10px 0 0 var(--mario-yellow),
-            15px 0 0 var(--mario-yellow),
-            20px 0 0 var(--mario-yellow),
-            25px 0 0 var(--mario-yellow);
+            /* Matrix-like dots */
+            0 0 0 6px var(--mario-blue),
+            16px 0 0 6px var(--mario-blue),
+            32px 0 0 6px var(--mario-blue),
+            48px 0 0 6px var(--mario-blue),
+            8px 12px 0 6px var(--mario-blue),
+            24px 12px 0 6px var(--mario-blue),
+            40px 12px 0 6px var(--mario-blue),
+            0 24px 0 6px var(--mario-blue),
+            16px 24px 0 6px var(--mario-blue),
+            32px 24px 0 6px var(--mario-blue),
+            48px 24px 0 6px var(--mario-blue);
     }
-    75%, 100% {
+    60%, 75% {
         box-shadow:
-            0 0 0 var(--mario-blue),
-            5px 5px 0 var(--mario-blue),
-            10px 0 0 var(--mario-blue),
-            15px 5px 0 var(--mario-blue),
-            20px 0 0 var(--mario-blue),
-            25px 5px 0 var(--mario-blue);
+            /* Checkmark */
+            24px 0 0 8px var(--mario-green),
+            32px 8px 0 8px var(--mario-green),
+            40px 16px 0 8px var(--mario-green),
+            48px 24px 0 8px var(--mario-green),
+            16px 8px 0 8px var(--mario-green),
+            8px 16px 0 8px var(--mario-green),
+            0 24px 0 8px var(--mario-green);
+    }
+    80%, 100% {
+        box-shadow:
+            /* Pulsing dots */
+            8px 8px 0 8px var(--mario-yellow),
+            24px 8px 0 8px var(--mario-yellow),
+            40px 8px 0 8px var(--mario-yellow),
+            56px 8px 0 8px var(--mario-yellow);
     }
 }
 
-@keyframes float {
+@keyframes computerFloat {
     0%, 100% {
-        transform: translateX(-50%) translateY(0);
+        transform: translateX(-50%) translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(-50%) translateY(-5px) rotate(-1deg);
     }
     50% {
-        transform: translateX(-50%) translateY(-8px);
+        transform: translateX(-50%) translateY(-10px) rotate(0deg);
+    }
+    75% {
+        transform: translateX(-50%) translateY(-5px) rotate(1deg);
+    }
+}
+
+@keyframes powerBlink {
+    0%, 50% {
+        opacity: 1;
+        box-shadow: 0 0 10px var(--mario-red);
+    }
+    25%, 75% {
+        opacity: 0.3;
+        box-shadow: 0 0 5px var(--mario-red);
     }
 }
 
