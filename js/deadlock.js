@@ -9,6 +9,17 @@ let allocation = [];
 let max = [];
 let available = [];
 
+function showDeadlockError(message) {
+    const errorDiv = document.querySelector('#deadlock-section .error-message');
+    if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 5000); // Hide after 5 seconds
+    }
+}
+
 /**
  * Setup matrices for Banker's Algorithm
  */
@@ -18,16 +29,17 @@ function setupDeadlockMatrices() {
     
     // Validation
     if (numProcesses < 1 || numProcesses > 10) {
-        alert('Number of processes must be between 1 and 10');
+        showDeadlockError('Number of processes must be between 1 and 10');
         return;
     }
     
     if (numResources < 1 || numResources > 10) {
-        alert('Number of resources must be between 1 and 10');
+        showDeadlockError('Number of resources must be between 1 and 10');
         return;
     }
     
     // Initialize matrices
+
     allocation = Array(numProcesses).fill(null).map(() => Array(numResources).fill(0));
     max = Array(numProcesses).fill(null).map(() => Array(numResources).fill(0));
     available = Array(numResources).fill(0);
@@ -112,7 +124,6 @@ function displayDeadlockMatrices() {
                 </tr>
             </tbody>
         </table>
-        <button id="calculateDeadlockBtn" class="btn-primary" style="margin-top: 20px;">Calculate Safe Sequence</button>
     `;
     
     matricesDiv.appendChild(allocationDiv);
@@ -121,6 +132,7 @@ function displayDeadlockMatrices() {
     
     // Add event listeners to inputs
     setupMatrixInputListeners();
+    calculateBankersAlgorithm();
 }
 
 /**
@@ -142,14 +154,10 @@ function setupMatrixInputListeners() {
             } else if (type === 'available') {
                 available[resource] = value;
             }
+            
+            calculateBankersAlgorithm();
         });
     });
-    
-    // Calculate button
-    const calculateBtn = document.getElementById('calculateDeadlockBtn');
-    if (calculateBtn) {
-        calculateBtn.addEventListener('click', calculateBankersAlgorithm);
-    }
 }
 
 /**
@@ -307,7 +315,10 @@ function calculateBankersAlgorithm() {
     // Validate inputs
     const need = calculateNeed();
     if (!need) {
-        alert('Invalid state: Need matrix has negative values. Please check your inputs.');
+        showDeadlockError('Invalid state: A process\'s max need cannot be less than its allocation. Please check your inputs.');
+        // Optionally clear results or show an error state in the results display
+        const resultsDiv = document.getElementById('deadlockResults');
+        resultsDiv.innerHTML = '<div class="result-box error"><p>Invalid input: Max need cannot be less than allocation.</p></div>';
         return;
     }
     
@@ -320,9 +331,14 @@ function calculateBankersAlgorithm() {
 
 // Setup event listener
 document.addEventListener('DOMContentLoaded', function() {
-    const setupBtn = document.getElementById('setupDeadlockBtn');
-    if (setupBtn) {
-        setupBtn.addEventListener('click', setupDeadlockMatrices);
+    const numProcessesInput = document.getElementById('numProcesses');
+    const numResourcesInput = document.getElementById('numResources');
+
+    if (numProcessesInput && numResourcesInput) {
+        numProcessesInput.addEventListener('input', setupDeadlockMatrices);
+        numResourcesInput.addEventListener('input', setupDeadlockMatrices);
+
+        // Initial setup on page load
+        setupDeadlockMatrices();
     }
 });
-
