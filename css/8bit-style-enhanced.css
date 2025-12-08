@@ -278,6 +278,39 @@ body::before {
     75% { transform: translateX(10px); }
 }
 
+/* Animated Character */
+.animated-character {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    font-size: 40px;
+    animation: walk 8s linear infinite;
+    filter: drop-shadow(3px 3px 0 rgba(0, 0, 0, 0.5));
+}
+
+@keyframes walk {
+    0% {
+        left: -60px;
+        transform: scaleX(1);
+    }
+    48% {
+        left: calc(100% - 40px);
+        transform: scaleX(1);
+    }
+    50% {
+        left: calc(100% - 40px);
+        transform: scaleX(-1);
+    }
+    98% {
+        left: -60px;
+        transform: scaleX(-1);
+    }
+    100% {
+        left: -60px;
+        transform: scaleX(1);
+    }
+}
+
 /* Login Hint */
 .login-hint {
     margin-top: 20px;
