@@ -1,6 +1,6 @@
 {
-  "name": "OS Simulator",
-  "short_name": "OS Sim",
+  "name": "AlgoLand",
+  "short_name": "AlgoLand",
   "description": "Operating System Algorithm Simulator - Deadlock, Page Replacement, and Scheduling",
   "start_url": "./index.html",
   "scope": "./",

@@ -267,7 +267,7 @@ function displayDeadlockResults(result) {
     if (result.safe && result.sequence.length > 0) {
         sequenceHTML = `
             <h4>Safe Sequence:</h4>
-            <p style="font-size: 18px; font-weight: bold; color: #10B981;">
+            <p class="safe-sequence">
                 ${result.sequence.map(p => `P${p}`).join(' → ')}
             </p>
         `;
@@ -306,6 +306,12 @@ function displayDeadlockResults(result) {
     `;
     
     resultsDiv.appendChild(resultBox);
+    
+    // Show export section when results are displayed
+    const exportSection = document.getElementById('deadlockExport');
+    if (exportSection) {
+        exportSection.style.display = 'flex';
+    }
 }
 
 /**
@@ -316,9 +322,14 @@ function calculateBankersAlgorithm() {
     const need = calculateNeed();
     if (!need) {
         showDeadlockError('Invalid state: A process\'s max need cannot be less than its allocation. Please check your inputs.');
-        // Optionally clear results or show an error state in the results display
+        // Show error state in the results display
         const resultsDiv = document.getElementById('deadlockResults');
-        resultsDiv.innerHTML = '<div class="result-box error"><p>Invalid input: Max need cannot be less than allocation.</p></div>';
+        resultsDiv.innerHTML = '<div class="result-box error"><h3>Invalid Input</h3><p>Max need cannot be less than allocation. Please check your inputs.</p></div>';
+        // Hide export section on error
+        const exportSection = document.getElementById('deadlockExport');
+        if (exportSection) {
+            exportSection.style.display = 'none';
+        }
         return;
     }
     
@@ -476,6 +487,7 @@ function exportDeadlockResults() {
     
     downloadAsFile('deadlock-results.txt', exportText);
     
+    // Show export section after download
     const exportSection = document.getElementById('deadlockExport');
     if (exportSection) {
         exportSection.style.display = 'flex';

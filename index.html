@@ -4,44 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#3B82F6">
-    <title>OS Simulator - Login</title>
+    <title>AlgoLand - Login</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💾</text></svg>">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/8bit-style-enhanced.css">
     <style>
-       
+        /* Background with pixelated effect */
         body {
             background-image: url('images/os-bg.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
             background-attachment: fixed;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+        
+        /* CRT Scanline Effect */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.03) 0px,
+                rgba(0, 0, 0, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 9999;
         }
         
         .container {
-            background-color: rgba(0, 0, 0, 0.55);
-            padding: 18px;
-            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 0px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
+    <div class="pixel-cloud-layer">
+        <img src="icons/8615149-removebg-preview.png" alt="Pixel clouds" class="pixel-cloud cloud-left-top">
+        <img src="icons/8615149-removebg-preview.png" alt="Pixel clouds" class="pixel-cloud cloud-left-bottom">
+        <img src="icons/8615149-removebg-preview.png" alt="Pixel clouds" class="pixel-cloud cloud-right-top">
+        <img src="icons/8615149-removebg-preview.png" alt="Pixel clouds" class="pixel-cloud cloud-right-bottom">
+    </div>
     <div class="container">
         <div class="login-box">
-            <h1>OS Simulator</h1>
+            <div class="logo-container">
+                <img src="icons/logo2.gif" alt="AlgoLand Algorithm Simulator" class="app-logo">
+            </div>
+            <p class="login-subtitle">Deadlock • Paging • Scheduling</p>
             <form id="loginForm">
-                <div class="form-group">
+                <div class="form-group" style="animation: fadeInUp 0.5s ease-out 0.2s both;">
                     <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
+                    <input type="text" id="username" name="username" required autocomplete="username" placeholder="Enter username...">
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="animation: fadeInUp 0.5s ease-out 0.4s both;">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="Enter password...">
+                        <button type="button" class="toggle-password" aria-label="Toggle password visibility">SHOW</button>
+                    </div>
+                </div>
+
+                <div class="remember-me" style="animation: fadeInUp 0.5s ease-out 0.5s both;">
+                    <label>
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkbox-custom"></span>
+                        <span class="remember-label">Remember me</span>
+                    </label>
                 </div>
                 <div id="errorMessage" class="error-message"></div>
-                <button type="submit" class="btn-primary">Login</button>
+                <button type="submit" class="btn-primary" style="animation: fadeInUp 0.5s ease-out 0.6s both;">Login</button>
+
+                <div class="login-mascot-container" style="animation: fadeInUp 0.5s ease-out 0.7s both;">
+                    <img src="icons/6ow.gif" alt="Mario pixel mascot" class="login-mascot">
+                </div>
                 
-                <div class="login-hint">
+                <div class="login-hint" style="animation: fadeInUp 0.5s ease-out 0.8s both;">
                     <p>💡 Test Credentials:</p>
                     <p><strong>admin</strong> / admin123</p>
                     <p><strong>user</strong> / user123</p>

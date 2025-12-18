@@ -37,6 +37,10 @@ function handleLogin(event) {
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value;
     const errorMessage = document.getElementById('errorMessage');
+    const loginButton = document.querySelector('.btn-primary');
+    
+    // Hide previous errors
+    errorMessage.classList.remove('show');
     
     // Input validation
     if (!username || !password) {
@@ -44,17 +48,46 @@ function handleLogin(event) {
         return;
     }
     
-    // Check credentials
-    if (VALID_CREDENTIALS[username] && VALID_CREDENTIALS[username] === password) {
-        // Store session
-        sessionStorage.setItem('isLoggedIn', 'true');
-        sessionStorage.setItem('username', username);
-        
-        // Redirect to dashboard
-        window.location.href = 'dashboard.html';
-    } else {
-        showError('Invalid username or password');
-    }
+    // Show loading state
+    loginButton.disabled = true;
+    loginButton.classList.add('loading');
+    const originalText = loginButton.textContent;
+    loginButton.textContent = 'Logging in';
+    
+    // Simulate brief loading (for better UX)
+    setTimeout(() => {
+        // Check credentials
+        if (VALID_CREDENTIALS[username] && VALID_CREDENTIALS[username] === password) {
+            // Store session
+            sessionStorage.setItem('isLoggedIn', 'true');
+            sessionStorage.setItem('username', username);
+
+            // Remember-me: store username locally if checked
+            const rememberMeCheckbox = document.getElementById('rememberMe');
+            if (rememberMeCheckbox && rememberMeCheckbox.checked) {
+                localStorage.setItem('rememberedUsername', username);
+                localStorage.setItem('rememberMe', 'true');
+            } else {
+                localStorage.removeItem('rememberedUsername');
+                localStorage.removeItem('rememberMe');
+            }
+            
+            // Success feedback
+            loginButton.textContent = 'Success!';
+            loginButton.style.background = 'linear-gradient(180deg, #5CAB3A 0%, #2e7d32 100%)';
+            
+            // Redirect to dashboard
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 500);
+        } else {
+            // Reset button
+            loginButton.disabled = false;
+            loginButton.classList.remove('loading');
+            loginButton.textContent = originalText;
+            showError('Invalid username or password');
+        }
+    }, 300);
 }
 
 /**
@@ -90,6 +123,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         loginForm.addEventListener('submit', handleLogin);
+    }
+
+    // Setup show/hide password toggle
+    const passwordInput = document.getElementById('password');
+    const togglePasswordBtn = document.querySelector('.toggle-password');
+    if (passwordInput && togglePasswordBtn) {
+        togglePasswordBtn.addEventListener('click', function() {
+            const isHidden = passwordInput.type === 'password';
+            passwordInput.type = isHidden ? 'text' : 'password';
+            togglePasswordBtn.textContent = isHidden ? 'HIDE' : 'SHOW';
+        });
+    }
+
+    // Prefill remembered username
+    const rememberedUsername = localStorage.getItem('rememberedUsername');
+    const rememberMeFlag = localStorage.getItem('rememberMe') === 'true';
+    const usernameInput = document.getElementById('username');
+    const rememberMeCheckbox = document.getElementById('rememberMe');
+
+    if (usernameInput && rememberedUsername && rememberMeFlag) {
+        usernameInput.value = rememberedUsername;
+        if (rememberMeCheckbox) {
+            rememberMeCheckbox.checked = true;
+        }
     }
     
     // Setup logout button if it exists
